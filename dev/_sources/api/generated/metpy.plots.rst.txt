@@ -20,6 +20,7 @@ Plots ``(metpy.plots)``
       :toctree: ./
    
       read_colortable
+      scattertext
       wx_code_to_numeric
       add_metpy_logo
       add_timestamp
@@ -48,6 +49,7 @@ Plots ``(metpy.plots)``
       ArrowPlot
       PlotObs
       PlotGeometry
+      PlotSurfaceAnalysis
       ScallopedStroke
       ColdFront
       ColdFrontogenesis
@@ -65,6 +67,8 @@ Plots ``(metpy.plots)``
       StationaryFrontogenesis
       StationaryFrontolysis
       SkewT
+      Stuve
+      Emagram
       Hodograph
       StationPlot
       StationPlotLayout

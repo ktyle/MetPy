@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_examples_plots_Plotting_Surface_Analysis.py>`
-        to download the full example code
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -28,7 +28,7 @@ path effects for matplotlib than can be used to represent a line as a traditiona
 
 .. GENERATED FROM PYTHON SOURCE LINES 13-23
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import cartopy.crs as ccrs
@@ -37,8 +37,8 @@ path effects for matplotlib than can be used to represent a line as a traditiona
 
     from metpy.cbook import get_test_data
     from metpy.io import parse_wpc_surface_bulletin
-    from metpy.plots import (add_metpy_logo, ColdFront, OccludedFront, StationaryFront,
-                             StationPlot, WarmFront)
+    from metpy.plots import (add_metpy_logo, ColdFront, OccludedFront, scattertext,
+                             StationaryFront, WarmFront)
 
 
 
@@ -54,9 +54,9 @@ pandas `DataFrame`. This essentially encapsulates some appropriate plotting meth
 as the necessary keyword arguments for giving the expected visual appearance for the
 features.
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-59
+.. GENERATED FROM PYTHON SOURCE LINES 28-60
 
-.. code-block:: default
+.. code-block:: Python
 
 
 
@@ -77,10 +77,11 @@ features.
         # Handle H/L points using MetPy's StationPlot class
         for field in ('HIGH', 'LOW'):
             rows = data[data.feature == field]
-            x, y = zip(*((pt.x, pt.y) for pt in rows.geometry))
-            sp = StationPlot(ax, x, y, transform=ccrs.PlateCarree(), clip_on=True)
-            sp.plot_text('C', [field[0]] * len(x), **complete_style[field])
-            sp.plot_parameter('S', rows.strength, **complete_style[field])
+            x, y = zip(*((pt.x, pt.y) for pt in rows.geometry), strict=False)
+            scattertext(ax, x, y, field[0],
+                        **complete_style[field], transform=ccrs.PlateCarree(), clip_on=True)
+            scattertext(ax, x, y, rows.strength, formatter='.0f', loc=(0, -10),
+                        **complete_style[field], transform=ccrs.PlateCarree(), clip_on=True)
 
         # Handle all the boundary types
         for field in ('WARM', 'COLD', 'STNRY', 'OCFNT', 'TROF'):
@@ -96,13 +97,13 @@ features.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-61
+.. GENERATED FROM PYTHON SOURCE LINES 61-62
 
 Set up the map for plotting, parse the bulletin, and plot it
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-79
+.. GENERATED FROM PYTHON SOURCE LINES 62-80
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Set up a default figure and map
@@ -137,7 +138,7 @@ Set up the map for plotting, parse the bulletin, and plot it
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  4.010 seconds)
+   **Total running time of the script:** (0 minutes 5.580 seconds)
 
 
 .. _sphx_glr_download_examples_plots_Plotting_Surface_Analysis.py:
@@ -146,16 +147,17 @@ Set up the map for plotting, parse the bulletin, and plot it
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: Plotting_Surface_Analysis.ipynb <Plotting_Surface_Analysis.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: Plotting_Surface_Analysis.py <Plotting_Surface_Analysis.py>`
 
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-      :download:`Download Jupyter notebook: Plotting_Surface_Analysis.ipynb <Plotting_Surface_Analysis.ipynb>`
+      :download:`Download zipped: Plotting_Surface_Analysis.zip <Plotting_Surface_Analysis.zip>`
 
 
 .. only:: html

@@ -46,7 +46,7 @@ class Meteogram:
             axis: number that controls the new axis to be plotted (FOR FUTURE)
         """
         if not time:
-            time = dt.datetime.utcnow()
+            time = dt.datetime.now(dt.timezone.utc)
         self.start = dates[0]
         self.fig = fig
         self.end = dates[-1]
@@ -181,7 +181,7 @@ hgt_example = 292.
 
 # Parse dates from .csv file, knowing their format as a string and convert to datetime
 def parse_date(date):
-    return dt.datetime.strptime(date.decode('ascii'), '%Y-%m-%d %H:%M:%S')
+    return dt.datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
 
 
 testdata = np.genfromtxt(get_test_data('timeseries.csv', False), names=True, dtype=None,

@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_examples_plots_spc_convective_outlook.py>`
-        to download the full example code
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -28,7 +28,7 @@ archives <https://www.spc.noaa.gov/archive/>`_.
 
 .. GENERATED FROM PYTHON SOURCE LINES 13-19
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import geopandas
@@ -49,7 +49,7 @@ Read in the geoJSON file containing the convective outlook.
 
 .. GENERATED FROM PYTHON SOURCE LINES 21-23
 
-.. code-block:: default
+.. code-block:: Python
 
     day1_outlook = geopandas.read_file(get_test_data('spc_day1otlk_20210317_1200_lyr.geojson'))
 
@@ -66,7 +66,7 @@ Preview the data.
 
 .. GENERATED FROM PYTHON SOURCE LINES 25-27
 
-.. code-block:: default
+.. code-block:: Python
 
     day1_outlook
 
@@ -118,7 +118,7 @@ Preview the data.
           <td>General Thunderstorms Risk</td>
           <td>#55BB55</td>
           <td>#C1E9C1</td>
-          <td>MULTIPOLYGON (((-75.21498 35.85713, -75.12000 ...</td>
+          <td>MULTIPOLYGON (((-75.21498 35.85713, -75.12 35....</td>
         </tr>
         <tr>
           <th>1</th>
@@ -130,7 +130,7 @@ Preview the data.
           <td>Marginal Risk</td>
           <td>#005500</td>
           <td>#66A366</td>
-          <td>MULTIPOLYGON (((-85.71646 29.55317, -85.76700 ...</td>
+          <td>MULTIPOLYGON (((-85.71646 29.55317, -85.767 29...</td>
         </tr>
         <tr>
           <th>2</th>
@@ -142,7 +142,7 @@ Preview the data.
           <td>Slight Risk</td>
           <td>#DDAA00</td>
           <td>#FFE066</td>
-          <td>MULTIPOLYGON (((-85.95065 29.84763, -85.98500 ...</td>
+          <td>MULTIPOLYGON (((-85.95065 29.84763, -85.985 29...</td>
         </tr>
         <tr>
           <th>3</th>
@@ -154,7 +154,7 @@ Preview the data.
           <td>Enhanced Risk</td>
           <td>#FF6600</td>
           <td>#FFA366</td>
-          <td>MULTIPOLYGON (((-88.40000 30.20000, -90.09000 ...</td>
+          <td>MULTIPOLYGON (((-88.4 30.2, -90.09 29.87, -91....</td>
         </tr>
         <tr>
           <th>4</th>
@@ -166,7 +166,7 @@ Preview the data.
           <td>Moderate Risk</td>
           <td>#CC0000</td>
           <td>#E06666</td>
-          <td>MULTIPOLYGON (((-87.07000 31.68000, -88.65000 ...</td>
+          <td>MULTIPOLYGON (((-87.07 31.68, -88.65 30.96, -9...</td>
         </tr>
         <tr>
           <th>5</th>
@@ -178,7 +178,7 @@ Preview the data.
           <td>High Risk</td>
           <td>#CC00CC</td>
           <td>#EE99EE</td>
-          <td>MULTIPOLYGON (((-91.88000 32.99000, -89.82000 ...</td>
+          <td>MULTIPOLYGON (((-91.88 32.99, -89.82 34.4, -88...</td>
         </tr>
       </tbody>
     </table>
@@ -195,7 +195,7 @@ shapes.
 
 .. GENERATED FROM PYTHON SOURCE LINES 31-38
 
-.. code-block:: default
+.. code-block:: Python
 
     geo = PlotGeometry()
     geo.geometry = day1_outlook['geometry']
@@ -217,7 +217,7 @@ Add the geometry plot to a panel and container.
 
 .. GENERATED FROM PYTHON SOURCE LINES 40-51
 
-.. code-block:: default
+.. code-block:: Python
 
     panel = MapPanel()
     panel.title = 'SPC Day 1 Convective Outlook (Valid 12z Mar 17 2021)'
@@ -245,7 +245,7 @@ Add the geometry plot to a panel and container.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  6.972 seconds)
+   **Total running time of the script:** (0 minutes 6.670 seconds)
 
 
 .. _sphx_glr_download_examples_plots_spc_convective_outlook.py:
@@ -254,16 +254,17 @@ Add the geometry plot to a panel and container.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: spc_convective_outlook.ipynb <spc_convective_outlook.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: spc_convective_outlook.py <spc_convective_outlook.py>`
 
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-      :download:`Download Jupyter notebook: spc_convective_outlook.ipynb <spc_convective_outlook.ipynb>`
+      :download:`Download zipped: spc_convective_outlook.zip <spc_convective_outlook.zip>`
 
 
 .. only:: html

@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_examples_gridding_Wind_SLP_Interpolation.py>`
-        to download the full example code
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -27,7 +27,7 @@ to make a consistent looking analysis, featuring contours of pressure and wind b
 
 .. GENERATED FROM PYTHON SOURCE LINES 12-27
 
-.. code-block:: default
+.. code-block:: Python
 
     import cartopy.crs as ccrs
     import cartopy.feature as cfeature
@@ -57,7 +57,7 @@ Read in data
 
 .. GENERATED FROM PYTHON SOURCE LINES 29-35
 
-.. code-block:: default
+.. code-block:: Python
 
     with get_test_data('station_data.txt') as f:
         data = pd.read_csv(f, header=0, usecols=(2, 3, 4, 5, 18, 19),
@@ -78,7 +78,7 @@ Project the lon/lat locations to our final projection
 
 .. GENERATED FROM PYTHON SOURCE LINES 37-41
 
-.. code-block:: default
+.. code-block:: Python
 
     lon = data['longitude'].values
     lat = data['latitude'].values
@@ -97,7 +97,7 @@ Remove all missing data from pressure
 
 .. GENERATED FROM PYTHON SOURCE LINES 43-45
 
-.. code-block:: default
+.. code-block:: Python
 
     x_masked, y_masked, pressure = remove_nan_observations(xp, yp, data['slp'].values)
 
@@ -114,7 +114,7 @@ Interpolate pressure using Cressman interpolation
 
 .. GENERATED FROM PYTHON SOURCE LINES 47-51
 
-.. code-block:: default
+.. code-block:: Python
 
     slpgridx, slpgridy, slp = interpolate_to_grid(x_masked, y_masked, pressure,
                                                   interp_type='cressman', minimum_neighbors=1,
@@ -133,7 +133,7 @@ Get wind information and mask where either speed or direction is unavailable
 
 .. GENERATED FROM PYTHON SOURCE LINES 53-63
 
-.. code-block:: default
+.. code-block:: Python
 
     wind_speed = (data['wind_speed'].values * units('m/s')).to('knots')
     wind_dir = data['wind_dir'].values * units.degree
@@ -160,7 +160,7 @@ Both will have the same underlying grid so throw away grid returned from v inter
 
 .. GENERATED FROM PYTHON SOURCE LINES 67-76
 
-.. code-block:: default
+.. code-block:: Python
 
     u, v = wind_components(wind_speed, wind_dir)
 
@@ -175,6 +175,15 @@ Both will have the same underlying grid so throw away grid returned from v inter
 
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /home/runner/work/MetPy/MetPy/examples/gridding/Wind_SLP_Interpolation.py:69: DeprecationWarning: __array__ implementation doesn't accept a copy keyword, so passing copy=False failed. __array__ must implement 'dtype' and 'copy' keyword arguments. To learn more, see the migration guide https://numpy.org/devdocs/numpy_2_0_migration_guide.html#adapting-to-changes-in-the-copy-keyword
+      windgridx, windgridy, uwind = interpolate_to_grid(x_masked, y_masked, np.array(u),
+    /home/runner/work/MetPy/MetPy/examples/gridding/Wind_SLP_Interpolation.py:73: DeprecationWarning: __array__ implementation doesn't accept a copy keyword, so passing copy=False failed. __array__ must implement 'dtype' and 'copy' keyword arguments. To learn more, see the migration guide https://numpy.org/devdocs/numpy_2_0_migration_guide.html#adapting-to-changes-in-the-copy-keyword
+      _, _, vwind = interpolate_to_grid(x_masked, y_masked, np.array(v), interp_type='cressman',
+
 
 
 
@@ -184,7 +193,7 @@ Get temperature information
 
 .. GENERATED FROM PYTHON SOURCE LINES 78-84
 
-.. code-block:: default
+.. code-block:: Python
 
     x_masked, y_masked, t = remove_nan_observations(xp, yp, data['temperature'].values)
     tempx, tempy, temp = interpolate_to_grid(x_masked, y_masked, t, interp_type='cressman',
@@ -205,7 +214,7 @@ Set up the map and plot the interpolated grids appropriately.
 
 .. GENERATED FROM PYTHON SOURCE LINES 86-111
 
-.. code-block:: default
+.. code-block:: Python
 
     levels = list(range(-20, 20, 1))
     cmap = plt.get_cmap('viridis')
@@ -247,7 +256,7 @@ Set up the map and plot the interpolated grids appropriately.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  6.752 seconds)
+   **Total running time of the script:** (0 minutes 9.228 seconds)
 
 
 .. _sphx_glr_download_examples_gridding_Wind_SLP_Interpolation.py:
@@ -256,16 +265,17 @@ Set up the map and plot the interpolated grids appropriately.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: Wind_SLP_Interpolation.ipynb <Wind_SLP_Interpolation.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: Wind_SLP_Interpolation.py <Wind_SLP_Interpolation.py>`
 
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-      :download:`Download Jupyter notebook: Wind_SLP_Interpolation.ipynb <Wind_SLP_Interpolation.ipynb>`
+      :download:`Download zipped: Wind_SLP_Interpolation.zip <Wind_SLP_Interpolation.zip>`
 
 
 .. only:: html

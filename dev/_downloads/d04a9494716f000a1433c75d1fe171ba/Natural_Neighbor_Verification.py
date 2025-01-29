@@ -67,9 +67,11 @@ from metpy.interpolate.points import natural_neighbor_point
 # estimate a value using natural neighbor interpolation.
 #
 # The locations of these observations are then used to generate a Delaunay triangulation.
-np.random.seed(100)
 
-pts = np.random.randint(0, 100, (10, 2))
+# Some randomly selected points
+pts = np.array([[8, 24], [67, 87], [79, 48], [10, 94], [52, 98],
+                [53, 66], [98, 14], [34, 24], [15, 60], [58, 16]])
+
 xp = pts[:, 0]
 yp = pts[:, 1]
 zp = (pts[:, 0] * pts[:, 0]) / 1000
@@ -91,7 +93,8 @@ ax.set_aspect('equal', 'datalim')
 ax.set_title('Triangulation of observations and test grid cell '
              'natural neighbor interpolation values')
 
-members, circumcenters = geometry.find_natural_neighbors(tri, list(zip(sim_gridx, sim_gridy)))
+members, circumcenters = geometry.find_natural_neighbors(tri, list(zip(sim_gridx, sim_gridy,
+                                                                       strict=False)))
 
 val = natural_neighbor_point(xp, yp, zp, (sim_gridx[0], sim_gridy[0]), tri, members[0],
                              circumcenters)
@@ -162,18 +165,18 @@ print('radii\n', r)
 # spatial data structure that we use here simply to show areal ratios.
 # Notice that the two natural neighbor triangle circumcenters are also vertices
 # in the Voronoi plot (green dots), and the observations are in the polygons (blue dots).
-vor = Voronoi(list(zip(xp, yp)))
+vort = Voronoi(list(zip(xp, yp, strict=False)))
 
 fig, ax = plt.subplots(1, 1, figsize=(15, 10))
 ax.ishold = lambda: True  # Work-around for Matplotlib 3.0.0 incompatibility
-voronoi_plot_2d(vor, ax=ax)
+voronoi_plot_2d(vort, ax=ax)
 
 nn_ind = np.array([0, 5, 7, 8])
 z_0 = zp[nn_ind]
 x_0 = xp[nn_ind]
 y_0 = yp[nn_ind]
 
-for x, y, z in zip(x_0, y_0, z_0):
+for x, y, z in zip(x_0, y_0, z_0, strict=False):
     ax.annotate(f'{x}, {y}: {z:.3f} F', xy=(x, y))
 
 ax.plot(sim_gridx[0], sim_gridy[0], 'k+', markersize=10)

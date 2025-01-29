@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_examples_plots_nhc_wind_probabilities.py>`
-        to download the full example code
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -32,7 +32,7 @@ The wind probabilities shapefile was retrieved from the `National Hurricane Cent
 
 .. GENERATED FROM PYTHON SOURCE LINES 17-23
 
-.. code-block:: default
+.. code-block:: Python
 
 
     import geopandas
@@ -53,13 +53,20 @@ Read in the shapefile file containing the wind probabilities.
 
 .. GENERATED FROM PYTHON SOURCE LINES 25-27
 
-.. code-block:: default
+.. code-block:: Python
 
     wind_data = geopandas.read_file(get_test_data('nhc_wind_prob_2021082012.zip'))
 
 
 
 
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    /opt/hostedtoolcache/Python/3.13.1/x64/lib/python3.13/site-packages/pyogrio/geopandas.py:265: UserWarning: More than one layer found in 'pyogrio_1e3cfce8ec914cfebabc7535c4add55f.zip': '2021082012_wsp34knt120hr_5km' (default), '2021082012_wsp50knt120hr_5km', '2021082012_wsp64knt120hr_5km'. Specify layer parameter to avoid this warning.
+      result = read_func(
 
 
 
@@ -71,7 +78,7 @@ Hurricane Center for their wind speed probability plots.
 
 .. GENERATED FROM PYTHON SOURCE LINES 30-34
 
-.. code-block:: default
+.. code-block:: Python
 
     wind_data['fill'] = ['none', '#008B00', '#00CD00', '#7FFF00', '#FFFF00', '#FFD700',
                          '#CD8500', '#FF7F00', '#CD0000', '#8B0000', '#8B008B']
@@ -130,7 +137,7 @@ Hurricane Center for their wind speed probability plots.
         <tr>
           <th>3</th>
           <td>20-30%</td>
-          <td>MULTIPOLYGON (((-144.55314 19.88150, -144.5531...</td>
+          <td>MULTIPOLYGON (((-144.55314 19.8815, -144.55314...</td>
           <td>#7FFF00</td>
         </tr>
         <tr>
@@ -188,7 +195,7 @@ Read in the shapefile file containing the cities.
 
 .. GENERATED FROM PYTHON SOURCE LINES 36-38
 
-.. code-block:: default
+.. code-block:: Python
 
     cities = geopandas.read_file(get_test_data('us_cities.zip'))
 
@@ -206,7 +213,7 @@ to display on our plot.
 
 .. GENERATED FROM PYTHON SOURCE LINES 41-51
 
-.. code-block:: default
+.. code-block:: Python
 
     cities = cities.loc[
         ((cities['NAME'] == 'Myrtle Beach') & (cities['STATE'] == 'SC'))
@@ -322,7 +329,7 @@ to display on our plot.
           <td>-75.084906</td>
           <td>1.0</td>
           <td>3.0</td>
-          <td>POINT (-75.08491 38.33650)</td>
+          <td>POINT (-75.08491 38.3365)</td>
         </tr>
         <tr>
           <th>8329</th>
@@ -397,7 +404,7 @@ Make sure that both GeoDataFrames have the same coordinate reference system (CRS
 
 .. GENERATED FROM PYTHON SOURCE LINES 53-55
 
-.. code-block:: default
+.. code-block:: Python
 
     cities = cities.to_crs(wind_data.crs)
 
@@ -417,21 +424,14 @@ lies within. That information is stored in the 'PERCENTAGE' column below.
 
 .. GENERATED FROM PYTHON SOURCE LINES 60-63
 
-.. code-block:: default
+.. code-block:: Python
 
-    cities = geopandas.sjoin(cities, wind_data, how='left', op='within')
+    cities = geopandas.sjoin(cities, wind_data, how='left', predicate='within')
     cities
 
 
 
 
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/sphinx_gallery/gen_gallery.py:213: FutureWarning: The `op` parameter is deprecated and will be removed in a future release. Please use the `predicate` parameter instead.
-      return 0., func()
 
 
 .. raw:: html
@@ -542,7 +542,7 @@ lies within. That information is stored in the 'PERCENTAGE' column below.
           <td>-75.084906</td>
           <td>1.0</td>
           <td>3.0</td>
-          <td>POINT (-75.08491 38.33650)</td>
+          <td>POINT (-75.08491 38.3365)</td>
           <td>3</td>
           <td>20-30%</td>
           <td>#7FFF00</td>
@@ -631,7 +631,7 @@ all of the polygons.
 
 .. GENERATED FROM PYTHON SOURCE LINES 67-72
 
-.. code-block:: default
+.. code-block:: Python
 
     wind_geo = PlotGeometry()
     wind_geo.geometry = wind_data['geometry']
@@ -653,7 +653,7 @@ below. Points are set to plot in white and the font color is set to black.
 
 .. GENERATED FROM PYTHON SOURCE LINES 76-83
 
-.. code-block:: default
+.. code-block:: Python
 
     city_geo = PlotGeometry()
     city_geo.geometry = cities['geometry']
@@ -676,7 +676,7 @@ wind speed probabilities, along with some select cities and their specific proba
 
 .. GENERATED FROM PYTHON SOURCE LINES 86-97
 
-.. code-block:: default
+.. code-block:: Python
 
     panel = MapPanel()
     panel.title = 'NHC 5-Day Tropical-Storm-Force Wind Probabilities (Valid 12z Aug 20 2021)'
@@ -704,7 +704,7 @@ wind speed probabilities, along with some select cities and their specific proba
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  17.171 seconds)
+   **Total running time of the script:** (0 minutes 5.888 seconds)
 
 
 .. _sphx_glr_download_examples_plots_nhc_wind_probabilities.py:
@@ -713,16 +713,17 @@ wind speed probabilities, along with some select cities and their specific proba
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: nhc_wind_probabilities.ipynb <nhc_wind_probabilities.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: nhc_wind_probabilities.py <nhc_wind_probabilities.py>`
 
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-      :download:`Download Jupyter notebook: nhc_wind_probabilities.ipynb <nhc_wind_probabilities.ipynb>`
+      :download:`Download zipped: nhc_wind_probabilities.zip <nhc_wind_probabilities.zip>`
 
 
 .. only:: html

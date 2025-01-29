@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_examples_calculations_QVector.py>`
-        to download the full example code
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -27,7 +27,7 @@ Use `metpy.calc.q_vector`.
 This example demonstrates the q_vector calculation by computing them from the example xarray
 Dataset and plotting using Matplotlib.
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-54
+.. GENERATED FROM PYTHON SOURCE LINES 14-56
 
 
 
@@ -51,7 +51,7 @@ Dataset and plotting using Matplotlib.
 
 |
 
-.. code-block:: default
+.. code-block:: Python
 
     import matplotlib.pyplot as plt
 
@@ -65,8 +65,10 @@ Dataset and plotting using Matplotlib.
     # Calculate the temperature advection of the flow
     tadv = mpcalc.advection(ds.temperature, ds.uwind, ds.vwind)
 
-    # Calculate the q-vectors
-    u_qvect, v_qvect = mpcalc.q_vector(ds.uwind, ds.vwind, ds.temperature, 850 * units.hPa)
+    # Calculate the q-vectors. Passing in a fixed value of static stability, but could also
+    # use `mpcalc.static_stability()`.
+    u_qvect, v_qvect = mpcalc.q_vector(ds.uwind, ds.vwind, ds.temperature, 850 * units.hPa,
+                                       static_stability=0.02 * units('J / kg / Pa^2'))
 
     # start figure and set axis
     fig, ax = plt.subplots(figsize=(5, 5))
@@ -97,7 +99,7 @@ Dataset and plotting using Matplotlib.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.249 seconds)
+   **Total running time of the script:** (0 minutes 0.155 seconds)
 
 
 .. _sphx_glr_download_examples_calculations_QVector.py:
@@ -106,16 +108,17 @@ Dataset and plotting using Matplotlib.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: QVector.ipynb <QVector.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: QVector.py <QVector.py>`
 
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-      :download:`Download Jupyter notebook: QVector.ipynb <QVector.ipynb>`
+      :download:`Download zipped: QVector.zip <QVector.zip>`
 
 
 .. only:: html

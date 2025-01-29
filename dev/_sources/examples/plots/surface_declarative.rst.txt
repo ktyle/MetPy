@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_examples_plots_surface_declarative.py>`
-        to download the full example code
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -27,7 +27,7 @@ meteorological analyses including surface observation plots.
 
 .. GENERATED FROM PYTHON SOURCE LINES 14-22
 
-.. code-block:: default
+.. code-block:: Python
 
     from datetime import datetime, timedelta
 
@@ -55,22 +55,15 @@ text output.
 
 .. GENERATED FROM PYTHON SOURCE LINES 29-33
 
-.. code-block:: default
+.. code-block:: Python
 
 
-    data = pd.read_csv(get_test_data('SFC_obs.csv', as_file_obj=False),
-                       infer_datetime_format=True, parse_dates=['valid'])
+    data = pd.read_csv(get_test_data('SFC_obs.csv', as_file_obj=False))
+    data['valid'] = pd.to_datetime(data['valid'], format='%Y-%m-%d %H:%M:%S')
 
 
 
 
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    /home/runner/work/MetPy/MetPy/examples/plots/surface_declarative.py:30: FutureWarning: The argument 'infer_datetime_format' is deprecated and will be removed in a future version. A strict version of it is now the default, see https://pandas.pydata.org/pdeps/0004-consistent-to-datetime-parsing.html. You can safely remove this argument.
-      data = pd.read_csv(get_test_data('SFC_obs.csv', as_file_obj=False),
 
 
 
@@ -84,7 +77,7 @@ Georgia.
 
 .. GENERATED FROM PYTHON SOURCE LINES 38-68
 
-.. code-block:: default
+.. code-block:: Python
 
 
     # Plotting the Observations using a 15 minute time window for surface observations
@@ -131,7 +124,7 @@ Georgia.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.484 seconds)
+   **Total running time of the script:** (0 minutes 1.135 seconds)
 
 
 .. _sphx_glr_download_examples_plots_surface_declarative.py:
@@ -140,16 +133,17 @@ Georgia.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: surface_declarative.ipynb <surface_declarative.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: surface_declarative.py <surface_declarative.py>`
 
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-      :download:`Download Jupyter notebook: surface_declarative.ipynb <surface_declarative.ipynb>`
+      :download:`Download zipped: surface_declarative.zip <surface_declarative.zip>`
 
 
 .. only:: html

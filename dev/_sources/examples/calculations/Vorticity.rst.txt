@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_examples_calculations_Vorticity.py>`
-        to download the full example code
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -40,7 +40,7 @@ Dataset and plotting using Matplotlib.
 
 
 
-.. code-block:: default
+.. code-block:: Python
 
     import matplotlib.pyplot as plt
 
@@ -51,13 +51,13 @@ Dataset and plotting using Matplotlib.
     ds = example_data()
 
     # Calculate the vertical vorticity of the flow
-    vor = mpcalc.vorticity(ds.uwind, ds.vwind)
+    vort = mpcalc.vorticity(ds.uwind, ds.vwind)
 
     # start figure and set axis
     fig, ax = plt.subplots(figsize=(5, 5))
 
     # scale vorticity by 1e5 for plotting purposes
-    cf = ax.contourf(ds.lon, ds.lat, vor * 1e5, range(-80, 81, 1), cmap=plt.cm.PuOr_r)
+    cf = ax.contourf(ds.lon, ds.lat, vort * 1e5, range(-80, 81, 1), cmap=plt.cm.PuOr_r)
     plt.colorbar(cf, pad=0, aspect=50)
     ax.barbs(ds.lon.values, ds.lat.values, ds.uwind, ds.vwind, color='black', length=5, alpha=0.5)
     ax.set(xlim=(260, 270), ylim=(30, 40))
@@ -68,7 +68,7 @@ Dataset and plotting using Matplotlib.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.334 seconds)
+   **Total running time of the script:** (0 minutes 0.142 seconds)
 
 
 .. _sphx_glr_download_examples_calculations_Vorticity.py:
@@ -77,16 +77,17 @@ Dataset and plotting using Matplotlib.
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: Vorticity.ipynb <Vorticity.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: Vorticity.py <Vorticity.py>`
 
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-      :download:`Download Jupyter notebook: Vorticity.ipynb <Vorticity.ipynb>`
+      :download:`Download zipped: Vorticity.zip <Vorticity.zip>`
 
 
 .. only:: html

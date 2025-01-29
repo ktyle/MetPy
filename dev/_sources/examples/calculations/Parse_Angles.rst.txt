@@ -11,7 +11,7 @@
         :class: sphx-glr-download-link-note
 
         :ref:`Go to the end <sphx_glr_download_examples_calculations_Parse_Angles.py>`
-        to download the full example code
+        to download the full example code.
 
 .. rst-class:: sphx-glr-example-title
 
@@ -30,7 +30,7 @@ in handling various string formatting.
 
 .. GENERATED FROM PYTHON SOURCE LINES 15-17
 
-.. code-block:: default
+.. code-block:: Python
 
     import metpy.calc as mpcalc
 
@@ -47,7 +47,7 @@ Create a test value of a directional text
 
 .. GENERATED FROM PYTHON SOURCE LINES 19-22
 
-.. code-block:: default
+.. code-block:: Python
 
     dir_str = 'SOUTH SOUTH EAST'
     print(dir_str)
@@ -72,7 +72,7 @@ the corresponding angle
 
 .. GENERATED FROM PYTHON SOURCE LINES 25-28
 
-.. code-block:: default
+.. code-block:: Python
 
     angle_deg = mpcalc.parse_angle(dir_str)
     print(angle_deg)
@@ -97,7 +97,7 @@ with different abbreviations and capitalizations
 
 .. GENERATED FROM PYTHON SOURCE LINES 31-34
 
-.. code-block:: default
+.. code-block:: Python
 
     dir_str_list = ['ne', 'NE', 'NORTHEAST', 'NORTH_EAST', 'NORTH east']
     angle_deg_list = mpcalc.parse_angle(dir_str_list)
@@ -110,7 +110,7 @@ with different abbreviations and capitalizations
 
  .. code-block:: none
 
-    (<Quantity(45.0, 'degree')>, <Quantity(45.0, 'degree')>, <Quantity(45.0, 'degree')>, <Quantity(45.0, 'degree')>, <Quantity(45.0, 'degree')>)
+    [45.0 45.0 45.0 45.0 45.0] degree
 
 
 
@@ -118,7 +118,7 @@ with different abbreviations and capitalizations
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.002 seconds)
+   **Total running time of the script:** (0 minutes 0.003 seconds)
 
 
 .. _sphx_glr_download_examples_calculations_Parse_Angles.py:
@@ -127,16 +127,17 @@ with different abbreviations and capitalizations
 
   .. container:: sphx-glr-footer sphx-glr-footer-example
 
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-
+      :download:`Download Jupyter notebook: Parse_Angles.ipynb <Parse_Angles.ipynb>`
 
     .. container:: sphx-glr-download sphx-glr-download-python
 
       :download:`Download Python source code: Parse_Angles.py <Parse_Angles.py>`
 
-    .. container:: sphx-glr-download sphx-glr-download-jupyter
+    .. container:: sphx-glr-download sphx-glr-download-zip
 
-      :download:`Download Jupyter notebook: Parse_Angles.ipynb <Parse_Angles.ipynb>`
+      :download:`Download zipped: Parse_Angles.zip <Parse_Angles.zip>`
 
 
 .. only:: html
